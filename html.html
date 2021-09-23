@@ -11,38 +11,15 @@
 </head>
 <body>
     <section id="table" class="body">
-        <div class="container">
-            <div>
-                <form>
-                    <textarea name="" id="" cols="30" rows="10" v-model="listInput"></textarea>
-                    <button class="btn" @click="addToList">Submit</button>
-                </form>
-                <ul v-for="item in listOne" >
-                    <li> 
-                        {{item}}
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <form>
-                    <textarea name="" id="" cols="30" rows="10" v-model="listInputTwo"></textarea>
-                    <button class="btn" @click="addToListTwo">Submit</button>
-                </form>
-                <ul v-for="item in listTwo" >
-                    <li> 
-                        {{item}}
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div>
-            <button class="btn">Compare List</button>
-            <ul>
-                <li>
-
-                </li>
-            </ul>
-        </div>
+        <form class="container">
+            <label>
+                <textarea name="" id="" cols="30" rows="10" v-model="listInput"></textarea>
+            </label>
+            <label>
+                <textarea name="" id="" cols="30" rows="10" v-model="listInputTwo"></textarea>
+            </label>
+            <button type="submit" class="btn" @click="compareList">Compare List</button>
+        </form>
     </section>
 </body>
 </html>

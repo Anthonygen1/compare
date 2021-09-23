@@ -7,31 +7,27 @@ const app = Vue.createApp({
             listTwo: []
         };
     },
-    compute: {
-        compareArray() {
-            for (let i = 0; index < listOne.length; index++) {
-                const element = listOne[i];
-                listTwo.filter(item => {
-                    if(item == element) {
-                        console.log(item);
+    computed: {
+        
+    },
+    methods: {
+        compareList(e){
+            e.preventDefault();
+            const list = this.listInput.split(/[ .:;?!~,`"&|()<>{}\[\]\r\n/\\]+/);
+            const listTwo = this.listInputTwo.split(/[ .:;?!~,`"&|()<>{}\[\]\r\n/\\]+/);
+            // console.log(list);
+            // console.log(listTwo);
+            this.compareArray(list, listTwo);
+        },
+        compareArray(a, b) {
+            for (let i = 0; i < a.length; i++) {
+                const element = a[i];
+                b.filter(item => {
+                    if(item === element) {
+                        console.log(item, element);
                     }
                 })
             }
-        }
-    },
-    methods: {
-        addToList(e) {
-            e.preventDefault();
-            const list = this.listInput.split(/[ .:;?!~,`"&|()<>{}\[\]\r\n/\\]+/);
-            console.log(list);
-        },
-        addToListTwo(e) {
-            e.preventDefault();
-            this.listTwo.push(this.listInputTwo);
-            console.log(this.listTwo);
-        },
-        compare(){
-            
         }
     }
 });
