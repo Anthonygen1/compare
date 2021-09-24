@@ -10,16 +10,46 @@
     <script src="app.js" defer></script>
 </head>
 <body>
-    <section id="table" class="body">
-        <form class="container">
-            <label>
-                <textarea name="" id="" cols="30" rows="10" v-model="listInput"></textarea>
-            </label>
-            <label>
-                <textarea name="" id="" cols="30" rows="10" v-model="listInputTwo"></textarea>
-            </label>
-            <button type="submit" class="btn" @click="compareList">Compare List</button>
+    <section id="table" class="app">
+        <h1>
+            Compare Skus
+        </h1>    
+        <form class="container" v-if="doneComparing === false">
+            <div class="container_textFields">
+                <label>
+                    <h3>
+                        List 1 Enter Text
+                    </h3>
+                    <textarea class="textfield" name="" id="" cols="30" rows="10" v-model="listInput"></textarea>
+                </label>
+                <label>
+                    <h3>
+                        List 2 Enter Text
+                    </h3>
+                    <textarea class="textfield" name="" id="" cols="30" rows="10" v-model="listInputTwo"></textarea>
+                </label>
+            </div>
+            <button 
+                type="submit" 
+                class="btn" 
+                @click="compareList"
+                >
+                Compare List
+            </button>
         </form>
+        <div class="container" v-if="doneComparing === true">
+            <div class="container">
+                <h2>
+                    Similar Skus
+                </h2>
+                <ul class="skulist">
+                    <li v-for="item in sameSku">
+                        {{ item }}
+                    </li>
+                </ul>
+            </div>
+            <button @click="reload" class="btn">Reload</button>
+        </div>
     </section>
 </body>
 </html>
