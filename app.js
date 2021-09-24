@@ -8,9 +8,6 @@ const app = Vue.createApp({
             doneComparing: false,
         };
     },
-    computed: {
-        
-    },
     methods: {
         compareList(e){
             e.preventDefault();
