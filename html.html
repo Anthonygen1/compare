@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VueJS</title>
+    <title>Sku Comparer</title>
+    <link rel="icon" href="arch.png">
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://unpkg.com/vue@next" defer></script>
     <script src="app.js" defer></script>
 </head>
 <body>
     <section id="table" class="app">
-        <div>
+        <div class="nav">
             <h1 v-if="doneComparing === true">
                 Finished.
             </h1>
@@ -20,15 +21,18 @@
             </h1>
         </div>    
         <form class="container" v-if="doneComparing === false">
+            <p class="text-red" v-if="error === true">
+                You need to enter a list into both fields
+            </p>
             <div class="container_textFields">
                 <label>
-                    <h3>
+                    <h2>
                         List 1 Enter Text
                     </h3>
                     <textarea class="textfield" name="" id="" cols="30" rows="10" v-model="listInput"></textarea>
                 </label>
                 <label>
-                    <h3>
+                    <h2>
                         List 2 Enter Text
                     </h3>
                     <textarea class="textfield" name="" id="" cols="30" rows="10" v-model="listInputTwo"></textarea>
@@ -43,10 +47,10 @@
             </button>
         </form>
         <div class="container" v-if="doneComparing === true">
-            <div class="container_textFields" v-if="uniques === true">
-                <div>
+            <div class="container_finished">
+                <div class="container_finished-blocks">
                     <h2>
-                        List A Unqiue Skus
+                        List One Unique Sku
                     </h2>
                     <ul class="skulist">
                         <li v-for="item in listAUnique">
@@ -54,9 +58,19 @@
                         </li>
                     </ul>
                 </div>
-                <div >
+                <div class="container_finished-blocks">
                     <h2>
-                        List A Unqiue Skus
+                        Similar Skus
+                    </h2>
+                    <ul class="skulist">
+                        <li v-for="item in sameSku">
+                            {{ item }}
+                        </li>
+                    </ul>
+                </div>
+                <div class="container_finished-blocks">
+                    <h2>
+                        List Two Unique Sku
                     </h2>
                     <ul class="skulist">
                         <li v-for="item in listBUnique">
@@ -64,16 +78,6 @@
                         </li>
                     </ul>
                 </div>
-            </div>
-            <div class="container">
-                <h2>
-                    Similar Skus
-                </h2>
-                <ul class="skulist">
-                    <li v-for="item in sameSku">
-                        {{ item }}
-                    </li>
-                </ul>
             </div>
             <div class="container_btn">
                 <button @click="reload" class="btn">Reload</button>

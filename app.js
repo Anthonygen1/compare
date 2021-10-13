@@ -9,6 +9,7 @@ const app = Vue.createApp({
             listAUnique: [],
             listBUnique: [],
             uniques: false,
+            error: false,
         };
     },
     methods: {
@@ -16,8 +17,13 @@ const app = Vue.createApp({
             e.preventDefault();
             const list = this.listInput.split(/[ .:;?!~,`"&|()<>{}\[\]\r\n/\\]+/);
             const listTwo = this.listInputTwo.split(/[ .:;?!~,`"&|()<>{}\[\]\r\n/\\]+/);
-            this.compareArray(list, listTwo);
-            this.doneComparing = true;
+            if (list.length > 1 && listTwo.length > 1) {
+                this.error = false;
+                this.compareArray(list, listTwo);
+                this.doneComparing = true;
+            } else {
+                this.error = true;
+            }
         },
         compareArray(a, b) {
             for (let i = 0; i < a.length; i++) {
@@ -63,6 +69,9 @@ const app = Vue.createApp({
             this.sameSku = [];
             this.listInput = '';
             this.listInputTwo = '';
+            this.listAUnique = [];
+            this.listBUnique = [];
+            this.uniques = false;
             this.doneComparing = false;
         }
     }
