@@ -3,7 +3,7 @@ const app = Vue.createApp({
         return {
             listInput: '',
             listInputTwo: '',
-            sameSku: [],
+            intersection: [],
             differentSku: [],
             doneComparing: false,
             listAUnique: [],
@@ -26,15 +26,18 @@ const app = Vue.createApp({
             }
         },
         compareArray(a, b) {
-            for (let i = 0; i < a.length; i++) {
-                const element = a[i];
-                b.filter(item => {
-                    if(item === element) {
-                        // Pushes Same Sku from both list to sameSku Global Var.
-                        this.sameSku.push(item);
-                    } 
-                })
-            }
+            // for (let i = 0; i < a.length; i++) {
+            //     const element = a[i];
+            //     b.filter(item => {
+            //         if(item === element) {
+            //             // Pushes Same Sku from both list to sameSku Global Var.
+            //             this.sameSku.push(item);
+            //         }
+            //     })
+            // }
+            // THIS IS GOLD USE THIS LOL
+            this.intersection = a.filter(x => b.includes(x));
+            console.log(this.intersection);
         },
         findUniques(e) {
             e.preventDefault();
@@ -52,6 +55,7 @@ const app = Vue.createApp({
                     }
                 })
             }
+            // Loops over second list
             for (let i = 0; i < listTwo.length; i++) {
                 const element = listTwo[i];
                 // Filters same sku list and check what ISNT equal from first list to the same sku list and dumps it into a unique list.
