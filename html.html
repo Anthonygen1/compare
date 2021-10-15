@@ -28,13 +28,13 @@
                 <label>
                     <h2>
                         List 1 Enter Text
-                    </h3>
+                    </h2>
                     <textarea class="textfield" name="" id="" cols="30" rows="10" v-model="listInput"></textarea>
                 </label>
                 <label>
                     <h2>
                         List 2 Enter Text
-                    </h3>
+                    </h2>
                     <textarea class="textfield" name="" id="" cols="30" rows="10" v-model="listInputTwo"></textarea>
                 </label>
             </div>
@@ -63,7 +63,7 @@
                         Similar Skus
                     </h2>
                     <ul class="skulist">
-                        <li v-for="item in sameSku">
+                        <li v-for="item in intersection">
                             {{ item }}
                         </li>
                     </ul>
@@ -81,7 +81,6 @@
             </div>
             <div class="container_btn">
                 <button @click="reload" class="btn">Reload</button>
-                <button @click="findUniques" class="btn">Get Uniques</button>
             </div>
         </div>
     </section>

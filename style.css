@@ -90,11 +90,10 @@ body {
 }
 .container_btn {
     width: 400px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin: 20px 0 100px 0;
 }
 .nav {
     width: 100%;
